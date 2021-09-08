@@ -11,11 +11,11 @@ function HomeNav(props) {
     <Container>
     <Navbar.Brand href="#home">S&L Warehouse</Navbar.Brand>
     <Nav className="me-auto">
-      <Nav.Link href="#home">Units & Pricing</Nav.Link>
-      <Nav.Link href="#features">Join the Waitlist</Nav.Link>
-      <Nav.Link href="#pricing">FAQ</Nav.Link>
-      <Nav.Link href="#pricing">Contact Us</Nav.Link>
-      <Nav.Link href="#pricing">Sign In</Nav.Link>
+      <Nav.Link href="#units">Units & Pricing</Nav.Link>
+      <Nav.Link href="#waitlist">Join the Waitlist</Nav.Link>
+      <Nav.Link href="#faq">FAQ</Nav.Link>
+      <Nav.Link href="#contact">Contact Us</Nav.Link>
+      <Nav.Link href="#sign-in">Sign In</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
