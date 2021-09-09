@@ -1,7 +1,7 @@
 // imported components
 import './App.css';
 import HomeNav from './components/HomeNav';
-// import SignIn from './components/SignIn';
+import SignIn from '/pages/Login';
 // import Units from './components/Units';
 // import Waitlist from './components/Waitlist';
 // import Faq from './components/Faq';
@@ -23,7 +23,7 @@ function App() {
     <Waitlist />
     <Faq /> */}
     <Contact />
-    {/* <SignIn /> */}
+    <SignIn />
 
 
     </>
