@@ -3,7 +3,7 @@ import './App.css';
 import HomeNav from './components/HomeNav';
 import SignIn from '/pages/Login';
 // import Units from './components/Units';
-// import Waitlist from './components/Waitlist';
+import Waitlist from './pages/Waitlist';
 // import Faq from './components/Faq';
 import Contact from './components/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,9 +19,9 @@ function App() {
     <>
     <HomeNav />
     {/* 
-    <Units />
+    <Units />*/
     <Waitlist />
-    <Faq /> */}
+    /*<Faq /> */}
     <Contact />
     <SignIn />
 
