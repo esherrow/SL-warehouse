@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {useMutation} from '@apollo/react-hooks'
+import {gql, useMutation} from '@apollo/client'
 import { ADD_TO_WAIT } from '../utils/mutations';
 
 function Waitlist(props){
-    const[addToWait]=useState(ADD_TO_WAIT);
+    const addToWait = {ADD_TO_WAIT } 
+    const[formState, setFormState]=useState(ADD_TO_WAIT);
 
     const handleFormSubmit = async event => {
         event.preventDefault();

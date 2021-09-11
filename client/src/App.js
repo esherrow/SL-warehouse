@@ -1,11 +1,9 @@
 // imported components
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import './App.css';
 import HomeNav from './components/HomeNav';
-import SignIn from '/pages/Login';
-// import Units from './components/Units';
+import SignIn from './pages/Login';
 import Waitlist from './pages/Waitlist';
-// import Faq from './components/Faq';
-import Contact from './components/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // bootstrap style sheet
@@ -13,20 +11,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
 
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 function App() {
   return (
-    <>
+    <ApolloProvider client={client}>
     <HomeNav />
-    {/* 
-    <Units />*/
-    <Waitlist />
-    /*<Faq /> */}
-    <Contact />
-    <SignIn />
 
 
-    </>
+
+    </ApolloProvider>
     )
     
 }
