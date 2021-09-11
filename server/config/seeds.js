@@ -1,5 +1,5 @@
-const db = require('connection');
-const {User, Unit} = require('../models');
+const db = require('./connection');
+const {User, Unit, Waitlist} = require('../models');
 
 db.once('open', async()=>{
     await Unit.deleteMany();
@@ -275,14 +275,26 @@ db.once('open', async()=>{
     await User.deleteMany();
 
     await User.create({
-        first_name:'',
-        last_name:'',
-        address:'',
-        phone:'',
-        email:'',
+        first_name:'Elizabeth',
+        last_name:'Sherrow',
+        address:'1234 North St',
+        phone:'123456789',
+        email:'test@email.com',
         password:'s&l2021',
     });
     console.log('users seeded');
 
+    await Waitlist.deleteMany();
+
+    await Waitlist.create({
+        first_name:'Elizabeth',
+        last_name:'Sherrow',
+        phone:'123456789',
+        email:'test@email.com',
+        location:'Hometown',
+        size:"5' x 10'"
+
+    });
+    console.log('waitlist seeded');
     process.exit()
 });

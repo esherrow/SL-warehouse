@@ -11,12 +11,8 @@ export const LOGIN = gql`
   }
 `;
 
-// export const ADD_TO_WAIT = gql`
-//   mutation addToWait($firstName: String!, $lastName: String!, $email: String!, $phone: String!, $size: String) {
-//     addToWait($firstName: String!, $lastName: String!, $email: String!, $phone: String!, $size: String) {
-//       user {
-//         _id
-//       }
-//     }
-//   }
-// `;
+export const ADD_TO_WAIT = gql`
+  mutation addToWait($firstName: String!, $lastName: String!, $email: String!, $phone: String!, $location: String!, $size: String) {
+    addToWait($firstName: String!, $lastName: String!, $email: String!, $phone: String!, $location: String!, $size: String) 
+  }
+`;

@@ -1,44 +1,89 @@
-// import React, {useState} from 'react';
-// import {useMutation} from '@apollo/react-hooks'
-// import { ADD_TO_WAIT } from '../utils/mutations';
+import React, {useState} from 'react';
+import {useMutation} from '@apollo/react-hooks'
+import { ADD_TO_WAIT } from '../utils/mutations';
 
-// function Waitlist(props){
-//     const[addToWait]=useState(ADD_TO_WAIT);
+function Waitlist(props){
+    const[addToWait]=useState(ADD_TO_WAIT);
 
-//     const handleFormSubmit = async event => {
-//         event.preventDefault();
-//         const mutationResponse = await addToWait({
-//             variables:{
-//                 email: formState.email, firstName: formState.firstName
-//             }
-//         })
-//     }
-// }
-import React from 'react';
-import { useForm } from 'react-hook-form';
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+        await addToWait({
+            variables:{
+                first_name: formState.firstName, last_name: formState.lastName, phone: formState.phone, email: formState.email, location: formState.location, size: formState.size 
+            }
+        });
+    };
 
-export default function App() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log(errors);
-  
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="First name" {...register("First name", {required: true, maxLength: 80})} />
-      <input type="text" placeholder="Last name" {...register("Last name", {required: true, maxLength: 100})} />
-      <input type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
-      <input type="tel" placeholder="Mobile number" {...register("Mobile number", {required: true, minLength: 6, maxLength: 12})} />
+    const handleChange = evt=>{
+        const{name, value}=evt.target;
+        setFormState({
+            ...formState, [name]:value
+        });
+    };
 
-      <input {...register} type="radio" value="Hometown Site (Kickapoo St)" />
-      <input {...register} type="radio" value=" Heritage Site (SR 3)" />
-      <input {...register} type="radio" value=" No Preference" />
+    return(
+        <div>
+            <h1>WaitList</h1>
+            <form onSubmit={handleFormSubmit}>
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="firstName">First Name</label>  
+                    <div className="col-md-4">
+                        <input id="firstName" name="firstName" type="firstName" placeholder="First Name" className="form-control input-md" onChange={handleChange}/>
+                        
+                    </div>
+                </div>
 
-      <input {...register} type="radio" value="5' x 10'" />
-      <input {...register} type="radio" value=" 10' x 10'" />
-      <input {...register} type="radio" value=" 10' x 15'" />
-      <input {...register} type="radio" value=" 10' x 20'" />
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="lastName">Last Name</label>  
+                    <div className="col-md-4">
+                        <input id="lastName" name="lastName" type="text" placeholder="Last Name" className="form-control input-md" onChange={handleChange}/>
+                        
+                    </div>
+                </div>
 
-      <input type="submit" />
-    </form>
-  );
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="email">Email</label>  
+                    <div className="col-md-4">
+                        <input id="email" name="email" type="email" placeholder="email@address.com" className="form-control input-md" onChange={handleChange}/>
+                        
+                    </div>
+                </div>
+
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="phone">Phone Number</label>  
+                    <div className="col-md-4">
+                        <input id="phone" name="phone" type="phone" placeholder="Phone Number" className="form-control input-md" onChange={handleChange}/>
+                        
+                    </div>
+                </div>
+
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="location">Preferred Location</label>
+                    <div className="col-md-4">
+                        <select id="location" name="location" className="form-control" onChange={handleChange}>
+                        <option value="hometown">Hometown Site (Kickapoo St)</option>
+                        <option value="heritage">Heritage Site (SR 3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="flex-row space-between my-2">
+                    <label className="col-md-4 control-label" htmlFor="size">Unit Size</label>
+                    <div className="col-md-4">
+                        <select id="size" name="size" className="form-control" onChange={handleChange}>
+                        <option value="5x10">5' x 10'</option>
+                        <option value="10x10">10' x 10'</option>
+                        <option value="10x15">10' x 15'</option>
+                        <option value="10x20">10' x 20'</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="flex-row space-between my-2">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    )
 }
+
+export default Waitlist;
