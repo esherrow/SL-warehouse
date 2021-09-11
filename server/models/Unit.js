@@ -17,10 +17,6 @@ const unitSchema = new Schema(
             type: String,
             required: true,
             trim: true
-        },
-        username: {
-            type: String,
-            require: true
         }
     }
 )
