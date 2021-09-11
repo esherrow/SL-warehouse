@@ -78,8 +78,8 @@ function Waitlist(props){
                         </select>
                     </div>
                 </div>
-                <div className="flex-row space-between my-2">
-                    <button type="submit">Submit</button>
+                <div className="flex-row space-between my-2 col-6 mx-auto">
+                    <button className="btn btn-danger" type="submit">Get Added to the Waitlist</button>
                 </div>
             </form>
         </div>
