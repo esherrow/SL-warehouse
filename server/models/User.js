@@ -36,6 +36,10 @@ const userSchema = new Schema(
         units: {
             type: Schema.Types.ObjectId,
             ref: 'Unit'
+        },
+        admin: {
+            type: Boolean,
+            required: true,
         }
     }
 )
