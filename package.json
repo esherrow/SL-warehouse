@@ -19,9 +19,8 @@
   },
   "scripts": {
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "cd server && npm start",
-    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "start:dev": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i","watch": "nodemon",
     "seed": "cd server && npm run seed"
   },

@@ -23,10 +23,14 @@ function Waitlist(props){
     };
 
     return(
-        <div>
-            <h1>WaitList</h1>
+        <div className="container">
+            <div className=" col ">
+                <div className="row justify-content-center">
+            <div className=" text-center"><h1>Join the WaitList</h1>
+            <p> Please add your information to the waitlist and we will contact you when a unit is available.</p>
+            </div>
             <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
+                <div className="flex-row space-between justify-content-centermy-2">
                     <label className="col-md-4 control-label" htmlFor="firstName">First Name</label>  
                     <div className="col-md-4">
                         <input id="firstName" name="firstName" type="firstName" placeholder="First Name" className="form-control input-md" onChange={handleChange}/>
@@ -83,7 +87,9 @@ function Waitlist(props){
                     <button type="submit">Submit</button>
                 </div>
             </form>
-        </div>
+            </div>
+            </div>
+            </div>
     )
 }
 
