@@ -4,7 +4,7 @@ import { ADD_TO_WAIT } from '../utils/mutations';
 
 function Waitlist(props){
     const addToWait = {ADD_TO_WAIT } 
-    const[formState, setFormState]=useState(ADD_TO_WAIT);
+    const[formState, setFormState]=useState(addToWait);
 
     const handleFormSubmit = async event => {
         event.preventDefault();
