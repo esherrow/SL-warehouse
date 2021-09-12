@@ -1,9 +1,11 @@
-// imported components
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ApolloProvider, ApolloClient, InMemoryCache  } from '@apollo/client';
+
 import HomeNav from './components/HomeNav';
+
 import SignIn from './pages/Login';
-import Waitlist from './pages/Waitlist';
+// import Waitlist from './pages/Waitlist';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // bootstrap style sheet
@@ -11,18 +13,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
-});
-
 const client = new ApolloClient({
-  link: httpLink,
-  cache: new InMemoryCache(),
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    });
+  },
+  uri: '/graphql',
+  cache: new InMemoryCache()
 });
 function App() {
   return (
     <ApolloProvider client={client}>
-    <HomeNav />
+      <Router>
+        <div>
+        <HomeNav />
+        <div>
+        {/* <Switch> */}
+        <Route exact path="/signin" component={SignIn} />
+        {/* <Waitlist /> */}
+        {/* </Switch> */}
+        </div>
+        </div>
+    </Router>
 
 
 

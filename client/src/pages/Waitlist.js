@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {gql, useMutation} from '@apollo/client'
+// import {gql, useMutation} from '@apollo/client'
 import { ADD_TO_WAIT } from '../utils/mutations';
 
 function Waitlist(props){
