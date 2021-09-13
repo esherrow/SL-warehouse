@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import SignIn from './pages/Login';
 import Units from './pages/Units';
 import Waitlist from './pages/Waitlist';
+import Contact from './pages/Contact';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/units" component={Units}/>
           <Route exact path ="/waitlist" component={Waitlist} />
+          <Route exact path="/contact" component={Contact} />
         </Switch>
         </div>
         </div>
