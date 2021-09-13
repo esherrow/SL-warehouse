@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought } = require('../models');
+const { User, Thought, Waitlist } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -21,6 +21,9 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
+    },
+    waitlist: async () => {
+      return Waitlist.find()
     }
   },
 
@@ -44,6 +47,11 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    ADD_TO_WAIT: async (parent, args) => {
+      const wait = await Waitlist.create(args);
+
+      return (wait);
     }
   }
 };

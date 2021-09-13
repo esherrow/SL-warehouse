@@ -21,6 +21,16 @@ const typeDefs = gql`
     status: String
   }
 
+  type Waitlist {
+    _id: ID
+    first_name: String
+    last_name: String
+    phone: String
+    email: String
+    location: String
+    size: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -30,6 +40,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    waitlist: [Waitlist]
   }
 
   type Mutation {
@@ -42,6 +53,12 @@ const typeDefs = gql`
             password: String!,
             admin: Boolean!
             ): User
+    ADD_TO_WAIT(first_name: String!,
+            last_name: String!,
+            email: String!,
+            phone: String!,
+            location: String!,
+            size: String!): Waitlist
   }
 `;
 
