@@ -1,30 +1,22 @@
-import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_UNITS } from '../utils/queries';
-//  import UnitsList from '../components/UnitsList';
+import Unitslist from '../components/UnitsList';
 
 
- 
-function GetAllUnits() {
+const Units = () => {
     const { loading, error, data } = useQuery(QUERY_UNITS);
-    const [units, setUnits] = useState([]);
-    useEffect(() => {
-        if(data){
-        console.log(data.getUnits);
-        setUnits(data.getUnits);
-        }
-    }, [data])
-
-
-
+    const units = data?.units || [];
+    console.log(units);
     return (
-        <div> 
-            <h1> Available Units</h1>
-            {''}
-            {units.map((val) => {
-                return <h1> {val.number} </h1>
-            })}
+        <div className="row justify-content-center g-2">
+        <div className="col-6 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <Unitslist units={units} title="Available Units" />
+          )}
         </div>
+      </div>
     )};
 
-export default GetAllUnits;
+export default Units;
