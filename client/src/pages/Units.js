@@ -13,7 +13,10 @@ const Units = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
+              <div className="container row text-center">
+              <h1 className="mb-3">Available Units</h1>
             <Unitslist units={units} title="Available Units" />
+            </div>
           )}
         </div>
       </div>
