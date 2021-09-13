@@ -1,7 +1,7 @@
 const db = require('../config/connection');
 const {User, Unit, Waitlist} = require('../models');
 
-db.once('open', async()=>{
+db.once('open', async() => {
     await Unit.deleteMany();
 
     const units = await Unit.insertMany([
@@ -270,31 +270,31 @@ db.once('open', async()=>{
         {number:'66',location:'Hometown',status:'Available'},
         {number:'67',location:'Hometown',status:'Available'},
     ]);
-    console.log('units seeded');
+    console.log('units seeded', units);
 
-    // await User.deleteMany();
+    await User.deleteMany();
 
-    // await User.create({
-    //     first_name:'Elizabeth',
-    //     last_name:'Sherrow',
-    //     address:'1234 North St',
-    //     phone:'123456789',
-    //     email:'test@email.com',
-    //     password:'s&l2021',
-    // });
-    // console.log('users seeded');
+    await User.create({
+        first_name:'Elizabeth',
+        last_name:'Sherrow',
+        address:'1234 North St',
+        phone:'123456789',
+        email:'test@email.com',
+        password:'s&l2021',
+    });
+    console.log('users seeded');
 
-    // await Waitlist.deleteMany();
+    await Waitlist.deleteMany();
 
-    // await Waitlist.create({
-    //     first_name:'Elizabeth',
-    //     last_name:'Sherrow',
-    //     phone:'123456789',
-    //     email:'test@email.com',
-    //     location:'Hometown',
-    //     size:"5' x 10'"
+    await Waitlist.create({
+        first_name:'Elizabeth',
+        last_name:'Sherrow',
+        phone:'123456789',
+        email:'test@email.com',
+        location:'Hometown',
+        size:"5' x 10'"
 
-    // });
-    // console.log('waitlist seeded');
-    process.exit(0)
+    });
+    console.log('waitlist seeded');
+    process.exit()
 });

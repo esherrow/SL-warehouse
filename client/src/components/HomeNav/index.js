@@ -1,25 +1,28 @@
 import React from "react";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 
-
-function HomeNav(props) {
+function HomeNav() {
   return (
-<>
-  <Navbar bg="primary" variant="dark">
-    <Container>
-    <Navbar.Brand href="#home">S&L Warehouse</Navbar.Brand>
-    <Nav className="me-auto">
-      <Nav.Link href="#units">Units & Pricing</Nav.Link>
-      <Nav.Link href="#waitlist">Join the Waitlist</Nav.Link>
-      <Nav.Link href="#faq">FAQ</Nav.Link>
-      <Nav.Link href="#contact">Contact Us</Nav.Link>
-      <Nav.Link href="#sign-in">Sign In</Nav.Link>
-    </Nav>
-    </Container>
-  </Navbar>
-</>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div className="container-fluid">
+    <Link to="/" className="navbar-brand text-lg font-effect-shadow-multiple">S&L Warehouse</Link>
+    
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    
+    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <div className="navbar-nav justify-space-between-lg justify-center align-center">
+      <Link to="/units" className="nav-link">Units & Pricing</Link>
+      <Link to="/waitlist" className="nav-link"> Join the Waitlist</Link>
+      <Link to="/faq" className="nav-link">FAQ</Link>
+      <Link to="/contact" className="nav-link">Contact Us</Link>
+      <Link to="/signin" className="nav-link">Sign In</Link>
+    </div>
+    </div>
+    </div>
+    </nav>
   );
 }
 
