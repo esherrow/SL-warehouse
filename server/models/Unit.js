@@ -17,6 +17,15 @@ const unitSchema = new Schema(
             type: String,
             required: true,
             trim: true
+        },
+        size:{
+            type: String,
+            required: true,
+            trim: true
+        },
+        cost:{
+            type: Number,
+            required: true
         }
     }
 )
