@@ -1,22 +1,27 @@
 import React, {useState} from 'react';
-// import {gql, useMutation} from '@apollo/client'
+import {useMutation} from '@apollo/client'
 import { ADD_TO_WAIT } from '../utils/mutations';
 
 function Waitlist(props){
-    const addToWait = {ADD_TO_WAIT } 
-    const[formState, setFormState]=useState(addToWait);
+    const [addToWait, { error }] = useMutation(ADD_TO_WAIT) 
+    const[formState, setFormState]=useState({ first_name: '', last_name: '', phone: '', email: '', location: '', size: ''});
+
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        await addToWait({
-            variables:{
-                first_name: formState.firstName, last_name: formState.lastName, phone: formState.phone, email: formState.email, location: formState.location, size: formState.size 
-            }
-        });
+        try {
+            const mutationResponse = await addToWait({
+                variables:{
+                    first_name: formState.firstName, last_name: formState.lastName, phone: formState.phone, email: formState.email, location: formState.location, size: formState.size 
+                }
+            });
+        } catch (e) {
+            console.log(e)
+        }
     };
 
-    const handleChange = evt=>{
-        const{name, value}=evt.target;
+    const handleChange = event =>{
+        const{name, value}=event.target;
         setFormState({
             ...formState, [name]:value
         });
