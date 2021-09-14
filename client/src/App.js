@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, InMemoryCache,  ApolloProvider } from '@apollo/client';
+import decode from 'jwt-decode'
 
 import HomeNav from './components/HomeNav';
 import Footer from './components/Footer';
@@ -35,6 +36,13 @@ const client = new ApolloClient({
 
 
 function App() {
+  const token = localStorage.getItem('id_token');
+
+  const decoded = decode(token);
+  console.log(decoded);
+  if (decoded.data.admin === true) {
+    console.log('Yahtzee!')
+  }
   return (
     <ApolloProvider client={client}>
       <Router>

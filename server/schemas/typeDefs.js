@@ -19,6 +19,7 @@ const typeDefs = gql`
     number: String
     location: String
     status: String
+    cost: String
   }
 
   type Waitlist {
@@ -41,6 +42,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     waitlist: [Waitlist]
+    GetUnits: [Unit]
   }
 
   type Mutation {
@@ -58,6 +60,7 @@ const typeDefs = gql`
             phone: String!,
             location: String!,
             size: String!): Waitlist
+    deleteUser(_id: ID!): Auth
   }
 `;
 

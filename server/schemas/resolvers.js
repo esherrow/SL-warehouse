@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought, Waitlist } = require('../models');
+const { User, Thought, Waitlist, Unit } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,6 +8,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
+
+        console.log(context)
 
         return userData;
       }
@@ -23,6 +25,9 @@ const resolvers = {
     },
     waitlist: async () => {
       return Waitlist.find()
+    },
+    GetUnits: async () => {
+      return Unit.find()
     }
   },
 
@@ -54,6 +59,15 @@ const resolvers = {
       const wait = await Waitlist.create(args);
 
       return (wait);
+    },
+    deleteUser: async (parent, args, context) => {
+      if (context.user.admin === true) {
+        const user = await User.findOneAndDelete({ _id: args._id });
+      } else {
+        throw new AuthenticationError('Must be admin to do this')
+      }
+
+      throw new AuthenticationError('Not logged in');
     }
   }
 };

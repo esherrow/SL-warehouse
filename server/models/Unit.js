@@ -24,7 +24,7 @@ const unitSchema = new Schema(
             trim: true
         },
         cost:{
-            type: Number,
+            type: String,
             required: true
         }
     }
