@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, InMemoryCache,  ApolloProvider } from '@apollo/client';
 
 import HomeNav from './components/HomeNav';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 
 import SignIn from './pages/Login';
@@ -48,6 +49,7 @@ function App() {
           <Route exact path="/contact" component={Contact} />
         </Switch>
         </div>
+        <Footer />
         </div>
     </Router>
     </ApolloProvider>

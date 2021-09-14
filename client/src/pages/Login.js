@@ -29,7 +29,7 @@ function Login(props){
     };
 
     return (
-        <div className="container-fluid pt-4 bg-secondary bg-opacity-25 py-5">
+        <div className="container-fluid pt-4 bg-secondary bg-opacity-25 p-5 vh-100">
             <h2>Login</h2>
             <form onSubmit={handleFormSubmit} >
                 <div className="flex-row space-between my-2 col-6">

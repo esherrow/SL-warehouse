@@ -51,7 +51,7 @@ function Waitlist(props){
     };
 
     return(
-        <div className="container-fluid bg-primary bg-opacity-25">
+        <div className="container-fluid bg-primary bg-opacity-25 pb-5 mb-5">
                 <div className="row justify-content-center pt-4">
                 <div className=" text-center">
                     <h1>Join the Waitlist</h1>

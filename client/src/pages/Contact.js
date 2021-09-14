@@ -19,7 +19,7 @@ function Contact(props){
     }
     
     return(
-        <div className ="container-fluid bg-primary bg-opacity-25">
+        <div className ="container-fluid bg-primary bg-opacity-25 pb-5">
             <div className="row justify-content-center pt-4">
                 <div className=" text-center">
                     <h1>Need to talk to S&L Warehouse?</h1>
