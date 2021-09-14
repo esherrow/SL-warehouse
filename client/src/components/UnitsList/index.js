@@ -1,19 +1,45 @@
 const UnitsList = ({units}) => {
     if (!units.length) {
         return <h3>No Units Available</h3>;
-    } else{        
-        const availableUnits = units.filter(function(e) {
-        return  e.status==="Available";
-            
-    })
-    units= availableUnits;
-    console.log(units);
+    } else{      
+        units
+            .filter(unit => unit.status=== 'Available')
+            .filter(availableUnit => {
+                if (availableUnit.location === 'Heritage') {
+                    let heritageUnits = {};
+                    availableUnit = heritageUnits 
+            }   if (availableUnit.location === 'Hometown') {
+                    let hometownUnits = {};
+                    availableUnit = hometownUnits
+            } return console.log(`Heritage Units available:${heritageUnits}`, `Hometown Units available: ${hometownUnits}`, `Total Units Available: ${availableUnits}`
+                )
+            })
+        
+
+
+
+
+
+    //     const availableUnits = units.filter(function(e) {
+    //     return  e.status==="Available";      
+    // })
+    // units= availableUnits;
+    // console.log(units);
 
 }
-    // console.log(availableUnits);
     return (
 
         <section>
+            <div>
+                <h2>Heritage Units Available</h2>
+
+                
+
+
+
+                
+            </div>
+
             {units &&
                 units.map((unit => (
                     
