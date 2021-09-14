@@ -16,7 +16,6 @@ const resolvers = {
     },
     users: async () => {
       return User.find()
-        .select('-__v -password')
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
@@ -36,7 +35,7 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError('Incorrect user credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);

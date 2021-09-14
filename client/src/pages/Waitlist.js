@@ -1,6 +1,27 @@
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/client'
 import { ADD_TO_WAIT } from '../utils/mutations';
+// import { onError } from 'apollo-link-error';
+// import { ApolloLink } from 'apollo-link';
+
+// const errorLink = onError(({ graphQLErrors, networkError }) => {
+//     if (graphQLErrors) {
+//       console.log('graphQLErrors', graphQLErrors);
+//     }
+//     if (networkError) {
+//       console.log('networkError', networkError);
+//     }
+//   });
+
+//   const httpLink = ...
+
+//   const link = ApolloLink.from([errorLink, httpLink]);
+  
+//   const client = new ApolloClient({
+//     ...,
+//     link,
+//     ...
+//   });
 
 function Waitlist(props){
     const [addToWait, { error }] = useMutation(ADD_TO_WAIT) 
@@ -10,9 +31,11 @@ function Waitlist(props){
     const handleFormSubmit = async event => {
         event.preventDefault();
         try {
+            console.log(formState);
+            
             const mutationResponse = await addToWait({
                 variables:{
-                    first_name: formState.firstName, last_name: formState.lastName, phone: formState.phone, email: formState.email, location: formState.location, size: formState.size 
+                    first_name: formState.first_name, last_name: formState.last_name, phone: formState.phone, email: formState.email, location: formState.location, size: formState.size 
                 }
             });
         } catch (e) {
@@ -39,13 +62,13 @@ function Waitlist(props){
             <div className="d-flex column-8 container justify-content-center">
             <form onSubmit={handleFormSubmit}>
             <div className="row my-2">
-                <label className="col control-label" htmlFor="firstName">First Name</label>  
-                <input id="firstName" name="firstName" type="firstName" placeholder="" className="form-control input-md border border-primary shadow" onChange={handleChange}/> 
+                <label className="col control-label" htmlFor="first_name">First Name</label>  
+                <input id="first_name" name="first_name" type="first_name" placeholder="" className="form-control input-md border border-primary shadow" onChange={handleChange}/> 
             </div>
 
             <div className="row my-2">
-                <label className="col control-label" htmlFor="lastName">Last Name</label>  
-                <input id="lastName" name="lastName" type="text" placeholder="" className="form-control input-md border border-primary shadow" onChange={handleChange}/> 
+                <label className="col control-label" htmlFor="last_name">Last Name</label>  
+                <input id="last_name" name="last_name" type="text" placeholder="" className="form-control input-md border border-primary shadow" onChange={handleChange}/> 
             </div>
 
                 <div className="row my-2">
