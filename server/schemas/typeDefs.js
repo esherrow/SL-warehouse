@@ -39,7 +39,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(username: String!): User
+    user(_id: ID!): User
     waitlist: [Waitlist]
   }
 
@@ -59,6 +59,15 @@ const typeDefs = gql`
             phone: String!,
             location: String!,
             size: String!): Waitlist
+    updateUser(_id: ID!, 
+      first_name: String,
+      last_name: String,
+      email: String,
+      address: String
+      phone: String,
+      password: String): User
+    deleteUser(_id: ID!): User
+    deleteWait(_id: ID!): Waitlist
   }
 `;
 

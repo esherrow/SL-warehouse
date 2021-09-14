@@ -17,8 +17,8 @@ const resolvers = {
     users: async () => {
       return User.find()
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    user: async (parent, { _id }) => {
+      return User.findOne({ _id })
         .select('-__v -password')
     },
     waitlist: async () => {
@@ -30,6 +30,14 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
   
+    },
+    updateUser: async (parent, args) => {
+      const user = await User.findOneAndUpdate({ _id: args._id }, args, { new: true })
+      return user
+    },
+    deleteUser: async (parent, args) => {
+      const user = await User.findOneAndDelete(args)
+      return('User was deleted!')
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -51,6 +59,9 @@ const resolvers = {
       const wait = await Waitlist.create(args);
 
       return (wait);
+    },
+    deleteWait: async (parent, args) => {
+      const wait = await Waitlist.findOneAndDelete(args)
     }
   }
 };
