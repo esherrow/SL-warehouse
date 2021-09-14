@@ -10,3 +10,15 @@ query {
     }
 }
     `;
+
+export const QUERY_CLIENTS = gql`
+query {
+    users {
+        _id
+        first_name
+        last_name
+        email
+        address
+        phone
+    }
+}`;

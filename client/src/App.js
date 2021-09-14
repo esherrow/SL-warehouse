@@ -4,6 +4,7 @@ import decode from 'jwt-decode'
 
 import HomeNav from './components/HomeNav';
 import Footer from './components/Footer';
+import AdminNav from './components/AdminNav'
 import Home from './pages/Home';
 
 import SignIn from './pages/Login';
@@ -12,6 +13,7 @@ import Waitlist from './pages/Waitlist';
 import Contact from './pages/Contact';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import GetClients from './pages/Clients';
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -41,7 +43,26 @@ function App() {
   const decoded = decode(token);
   console.log(decoded);
   if (decoded.data.admin === true) {
-    console.log('Yahtzee!')
+    return (
+      <ApolloProvider client={client}>
+      <Router>
+        <div>
+        <AdminNav />
+        <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/clients" component={GetClients} />
+          {/* <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/units" component={Units}/>
+          <Route exact path ="/waitlist" component={Waitlist} />
+          <Route exact path="/contact" component={Contact} /> */}
+        </Switch>
+        </div>
+        <Footer />
+        </div>
+    </Router>
+    </ApolloProvider>
+    )
   }
   return (
     <ApolloProvider client={client}>
