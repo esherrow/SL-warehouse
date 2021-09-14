@@ -283,9 +283,8 @@ db.once('open', async() => {
         last_name:'Sherrow',
         address:'1234 North St',
         phone:'123456789',
-        email:'test@email.com',
+        email:'slwarehouse@email.com',
         password:'s&l2021',
-        admin: true
     });
     await User.create({
         first_name:'Beth',
@@ -294,7 +293,6 @@ db.once('open', async() => {
         phone:'123456789',
         email:'test2@email.com',
         password:'sl2021',
-        admin: false
     });
     console.log('users seeded');
 

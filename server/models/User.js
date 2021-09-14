@@ -41,14 +41,25 @@ const userSchema = new Schema(
         admin: {
             type: Boolean,
             required: true,
+            default: false
         }
-    }
+    } 
 )
+userSchema.pre('save', async function(next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+      this.admin = this.email.includes("slwarehouse")? true:false
+    }
+  
+    next();
+  });
 
 userSchema.methods.isCorrectPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
   };
   
+ 
 
 const User = model('User', userSchema);
 

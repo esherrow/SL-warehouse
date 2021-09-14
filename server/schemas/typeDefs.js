@@ -50,9 +50,8 @@ const typeDefs = gql`
             address: String!,
             phone: String!,
             email: String!,
-            password: String!,
-            admin: Boolean!
-            ): User
+            password: String!
+            ): Auth
     ADD_TO_WAIT(first_name: String!,
             last_name: String!,
             email: String!,
