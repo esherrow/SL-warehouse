@@ -20,5 +20,18 @@ query {
         email
         address
         phone
+        status
+    }
+}`;
+
+export const QUERY_WAITLIST = gql`
+query {
+    waitlist {
+        first_name
+        last_name
+        phone
+        email
+        location
+        size
     }
 }`;

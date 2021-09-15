@@ -11,9 +11,11 @@ import SignIn from './pages/Login';
 import Units from './pages/Units';
 import Waitlist from './pages/Waitlist';
 import Contact from './pages/Contact';
+import GetWaitlist from './pages/ClientWait'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GetClients from './pages/Clients';
+
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -39,9 +41,11 @@ const client = new ApolloClient({
 
 function App() {
   const token = localStorage.getItem('id_token');
+  if (token){
+    const decoded = decode(token);
+    console.log(decoded);
 
-  const decoded = decode(token);
-  console.log(decoded);
+    
   if (decoded.data.admin === true) {
     return (
       <ApolloProvider client={client}>
@@ -52,10 +56,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/clients" component={GetClients} />
-          {/* <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/waitlistclients" component={GetWaitlist} />
           <Route exact path="/units" component={Units}/>
-          <Route exact path ="/waitlist" component={Waitlist} />
-          <Route exact path="/contact" component={Contact} /> */}
         </Switch>
         </div>
         <Footer />
@@ -63,6 +65,9 @@ function App() {
     </Router>
     </ApolloProvider>
     )
+  }
+
+  
   }
   return (
     <ApolloProvider client={client}>

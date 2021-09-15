@@ -68,6 +68,16 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    deleteWait: async (parents,args) => {
+      const wait = await Waitlist.findOneAndDelete(args);
+    },
+    assignUnit: async (parents, args) => {
+      const unitassign = await User.findOneAndUpdate(
+        { _id: args._id },
+        { $addToSet: { units: args.unitID } },
+        { new: true }
+      ).populate('units')
     }
   }
 };

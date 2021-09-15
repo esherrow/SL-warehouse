@@ -15,8 +15,10 @@ function AdminNav() {
       <Link to="/clients" className="nav-link">Current Clients</Link>
       <Link to="/waitlistclients" className="nav-link"> Waitlist Clients</Link>
       <Link to="/myuntis" className="nav-link">Units</Link>
-      <Link to="/status" className="nav-link">Account Status</Link>
-      <Link to="/" className="nav-link">Sign Out</Link>
+      <Link to="/" className="nav-link" onClick={() => {
+        localStorage.setItem('id_token', '');
+        window.location.assign('/')
+      }}>Sign Out</Link>
     </div>
     </div>
     </div>

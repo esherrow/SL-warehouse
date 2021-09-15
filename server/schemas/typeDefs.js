@@ -11,6 +11,7 @@ const typeDefs = gql`
     password: String
     units: [Unit]
     admin: Boolean
+    status: String
     
   }
 
@@ -53,6 +54,8 @@ const typeDefs = gql`
             phone: String!,
             email: String!,
             password: String!
+            admin: Boolean!
+            status: String
             ): Auth
     ADD_TO_WAIT(first_name: String!,
             last_name: String!,
@@ -61,6 +64,8 @@ const typeDefs = gql`
             location: String!,
             size: String!): Waitlist
     deleteUser(_id: ID!): Auth
+    deleteWait(email: String!): Auth
+    assignUnit(_id: ID!, unitID: String!): Unit
   }
 `;
 

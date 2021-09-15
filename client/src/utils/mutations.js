@@ -54,3 +54,10 @@ mutation addUser( $first_name: String!,$last_name: String!,$address: String!,$ph
     }
   }
 }`;
+
+export const DELETE_WAIT = gql`
+mutation deleteWait($email: String!) {
+  deleteWait(email: $email) {
+      token
+  }
+}`;
