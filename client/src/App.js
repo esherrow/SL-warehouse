@@ -12,6 +12,7 @@ import Units from './pages/Units';
 import Waitlist from './pages/Waitlist';
 import Contact from './pages/Contact';
 import GetWaitlist from './pages/ClientWait'
+import FAQ from './pages/FAQ'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GetClients from './pages/Clients';
@@ -81,6 +82,7 @@ function App() {
           <Route exact path="/units" component={Units}/>
           <Route exact path ="/waitlist" component={Waitlist} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/faq" component={FAQ} />
         </Switch>
         </div>
         <Footer />
