@@ -51,4 +51,4 @@
   <br>
 
 # Heroku
-  ## Visit the [`Deployed App`](https://heroku.com).
+  ## Visit the [`Deployed App`](https://sl-warehouse.herokuapp.com/).
