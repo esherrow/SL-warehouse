@@ -27,7 +27,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "watch": "nodemon",
     "seed": "cd server && npm run seed",
-    "heroku-postbuild": "cd client && npm run build"
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
