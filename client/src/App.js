@@ -15,6 +15,7 @@ import GetWaitlist from './pages/ClientWait'
 import FAQ from './pages/FAQ'
 import GetClients from './pages/Clients';
 import EditClients from './pages/EditUser';
+import AddClients from './pages/AddUser'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -62,6 +63,7 @@ function App() {
           <Route exact path="/waitlistclients" component={GetWaitlist} />
           <Route exact path="/units" component={Units}/>
           <Route exact path="/edit" component={EditClients} />
+          <Route exact path="/add" component={AddClients} />
         </Switch>
         </div>
         <Footer />
