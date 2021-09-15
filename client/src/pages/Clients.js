@@ -49,6 +49,9 @@ function GetClients() {
                     ))}
                 </tbody>
             </table>
+            <button className="btn btn-danger shadow" onClick={() => {
+                window.location.replace('/add');
+            }}>Add User</button>
             {/* {clients &&
                 clients.map((user) => (
                     <div key={user._id}>

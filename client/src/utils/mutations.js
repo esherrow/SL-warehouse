@@ -39,9 +39,9 @@ export const ADD_TO_WAIT = gql`
 `;
 
 export const ADD_USER = gql`
-mutation addUser( $first_name: String!,$last_name: String!,$address: String!,$phone: String!,$email: String!,$password: String!)
+mutation addUser( $first_name: String!,$last_name: String!,$address: String!,$phone: String!,$email: String!,$password: String!, $admin: Boolean!)
 {
-  addUser(first_name:$first_name, last_name:$last_name, address:$address, phone:$phone, email:$email, password:$password){
+  addUser(first_name:$first_name, last_name:$last_name, address:$address, phone:$phone, email:$email, password:$password, admin: $admin){
     token
     user{
       first_name
