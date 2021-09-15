@@ -11,7 +11,7 @@ const UnitsList = ({units}) => {
             {units &&
                 units.map((unit) => (
                     <div key={unit._id}>
-                        <p>{unit.number} is avaiable for {unit.cost}</p>
+                        <p>{unit.number} is available for {unit.cost}</p>
                     </div>
                 ))}
         </div>
