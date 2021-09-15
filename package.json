@@ -26,7 +26,8 @@
     "start": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "watch": "nodemon",
-    "seed": "cd server && npm run seed"
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
