@@ -7,14 +7,41 @@ const UnitsList = ({units}) => {
     console.log(units)
 
     return (
-        <div>
+
+        <section>
+            <div>
+                <h2>Heritage Units Available</h2>
+
+                
+
+
+
+                
+            </div>
+
             {units &&
-                units.map((unit) => (
-                    <div key={unit._id}>
-                        <p>{unit.number} is avaiable for {unit.cost}</p>
+                units.map((unit => (
+                    
+                <div key={unit._id} className="card mb-3">
+                        <p className="card-header">
+                            {unit.location}
+                        </p>
+                    <div className="card-body">
+                        <p>{unit.number}</p>
+                        <p className="mb-0">Status: {unit.status}</p>
                     </div>
-                ))}
-        </div>
+                </div>
+                )))
+            }
+        </section>
+        // <div>
+        //     {units &&
+        //         units.map((unit) => (
+        //             <div key={unit._id}>
+        //                 <p>{unit.number} is avaiable for {unit.cost}</p>
+        //             </div>
+        //         ))}
+        // </div>
     );
 };
 
