@@ -56,8 +56,26 @@ mutation addUser( $first_name: String!,$last_name: String!,$address: String!,$ph
 }`;
 
 export const DELETE_WAIT = gql`
-mutation deleteWait($email: String!) {
-  deleteWait(email: $email) {
+mutation deleteWait($_id: ID!) {
+  deleteWait(_id: $_id) {
       token
+  }
+}`;
+
+export const DELETE_USER = gql`
+mutation deleteUser($_id: ID!) {
+  deleteUser(_id: $_id) {
+    user {
+      _id
+    }
+  }
+}`;
+
+export const UPDATE_USER = gql`
+mutation updateUser($_id: ID!, $first_name: String,$last_name: String,$address: String,$phone: String,$email: String, $admin: Boolean, $status: String) {
+  updateUser(_id: $_id, first_name:$first_name, last_name:$last_name, address:$address, phone:$phone, email:$email, admin: $admin, status: $status) {
+    user {
+      _id
+    }
   }
 }`;

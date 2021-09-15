@@ -61,16 +61,17 @@ const resolvers = {
       return (wait);
     },
     deleteUser: async (parent, args, context) => {
-      if (context.user.admin === true) {
-        const user = await User.findOneAndDelete({ _id: args._id });
-      } else {
-        throw new AuthenticationError('Must be admin to do this')
-      }
+      const user = await User.findOneAndDelete({ _id: args._id });
+      // if (context.user.admin === true) {
+        
+      // } else {
+      //   throw new AuthenticationError('Must be admin to do this')
+      // }
 
-      throw new AuthenticationError('Not logged in');
+      // throw new AuthenticationError('Not logged in');
     },
     deleteWait: async (parents,args) => {
-      const wait = await Waitlist.findOneAndDelete(args);
+      const wait = await Waitlist.findOneAndDelete({ _id: args._id }) ;
     },
     assignUnit: async (parents, args) => {
       const unitassign = await User.findOneAndUpdate(
@@ -78,6 +79,13 @@ const resolvers = {
         { $addToSet: { units: args.unitID } },
         { new: true }
       ).populate('units')
+    },
+    updateUser: async (parent, args) => {
+      const upuser = await User.findOneAndUpdate(
+        { _id: args._id},
+        { first_name: args.first_name, last_name: args.last_name, address: args.address, email: args.email, phone: args.phone, status: args.status, admin: args.admin },
+        { new: true }
+      )
     }
   }
 };
