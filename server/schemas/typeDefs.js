@@ -64,8 +64,17 @@ const typeDefs = gql`
             location: String!,
             size: String!): Waitlist
     deleteUser(_id: ID!): Auth
-    deleteWait(email: String!): Auth
+    deleteWait(_id: ID!): Auth
     assignUnit(_id: ID!, unitID: String!): Unit
+    updateUser(_id: ID!,
+      first_name: String,
+      last_name: String,
+      address: String,
+      phone: String,
+      email: String,
+      admin: Boolean,
+      status: String,
+      ): Auth
   }
 `;
 

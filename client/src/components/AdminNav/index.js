@@ -14,7 +14,7 @@ function AdminNav() {
     <div className="navbar-nav justify-space-between-lg justify-center align-center">
       <Link to="/clients" className="nav-link">Current Clients</Link>
       <Link to="/waitlistclients" className="nav-link"> Waitlist Clients</Link>
-      <Link to="/myuntis" className="nav-link">Units</Link>
+      <Link to="/units" className="nav-link">Units</Link>
       <Link to="/" className="nav-link" onClick={() => {
         localStorage.setItem('id_token', '');
         window.location.assign('/')

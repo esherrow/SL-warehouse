@@ -1,8 +1,11 @@
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_CLIENTS } from "../utils/queries";
+import { DELETE_USER } from '../utils/mutations';
+import { Link } from "react-router-dom";
 
 function GetClients() {
     const { data, error } = useQuery(QUERY_CLIENTS);
+    const [deleteUser, { loading }] = useMutation(DELETE_USER);
 
     const clients = data?.users || [];
 
@@ -20,6 +23,8 @@ function GetClients() {
                         <th>Email</th>
                         <th>Units</th>
                         <th>Status</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +37,14 @@ function GetClients() {
                             <td>{user.email}</td>
                             <td>{user.units}</td>
                             <td>{user.status}</td>
+                            <td><button onClick={() => {
+                                localStorage.setItem('userData', JSON.stringify(user));
+                                window.location.replace('/edit');
+                            }}>Edit</button></td>
+                            <td><button value={user._id} onClick={e => deleteUser({
+                                variables:{
+                                    _id: e.target.value}
+                                }, window.location.reload())}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
