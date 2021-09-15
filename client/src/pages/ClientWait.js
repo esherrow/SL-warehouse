@@ -48,9 +48,9 @@ function GetWaitlist() {
                             <td>{waitlist.phone}</td>
                             <td>{waitlist.location}</td>
                             <td>{waitlist.size}</td>
-                            <td><button value={waitlist.email} onClick={e => deleteWait({
+                            <td><button value={waitlist._id} onClick={e => deleteWait({
                                 variables:{
-                                    email: e.target.value}
+                                    _id: e.target.value}
                                 }, window.location.reload())}>Delete</button></td>
                         </tr>
                     ))}

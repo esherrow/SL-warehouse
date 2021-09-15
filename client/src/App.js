@@ -5,17 +5,19 @@ import decode from 'jwt-decode'
 import HomeNav from './components/HomeNav';
 import Footer from './components/Footer';
 import AdminNav from './components/AdminNav'
-import Home from './pages/Home';
 
+import Home from './pages/Home';
 import SignIn from './pages/Login';
 import Units from './pages/Units';
 import Waitlist from './pages/Waitlist';
 import Contact from './pages/Contact';
 import GetWaitlist from './pages/ClientWait'
 import FAQ from './pages/FAQ'
+import GetClients from './pages/Clients';
+import EditClients from './pages/EditUser';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import GetClients from './pages/Clients';
+
 
 <link
   rel="stylesheet"
@@ -59,6 +61,7 @@ function App() {
           <Route exact path="/clients" component={GetClients} />
           <Route exact path="/waitlistclients" component={GetWaitlist} />
           <Route exact path="/units" component={Units}/>
+          <Route exact path="/edit" component={EditClients} />
         </Switch>
         </div>
         <Footer />

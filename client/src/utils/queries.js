@@ -21,12 +21,14 @@ query {
         address
         phone
         status
+        admin
     }
 }`;
 
 export const QUERY_WAITLIST = gql`
 query {
     waitlist {
+        _id
         first_name
         last_name
         phone
